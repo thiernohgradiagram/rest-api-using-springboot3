@@ -1,4 +1,4 @@
-package com.thiernoh;
+package com.thiernoh.person;
 
 import java.util.Objects;
 
