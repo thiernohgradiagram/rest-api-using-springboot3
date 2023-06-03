@@ -1,5 +1,7 @@
 package com.thiernoh.person;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class PersonController {
 
     private final PersonService personService;
