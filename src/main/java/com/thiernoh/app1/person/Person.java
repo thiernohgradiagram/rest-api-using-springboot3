@@ -1,17 +1,23 @@
-package com.thiernoh.person;
+package com.thiernoh.app1.person;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
 
 /**
  * This is a Person model
  */
+@Document(collection = "persons")
 public class Person {
 
     // private instance fields (final && non-final)
+    @Id private String _id;
     private String firstName;
     private String lastName;
-    private String phoneNumber;
-    private String email;
+    @Indexed(unique = true) private String phoneNumber;
+    @Indexed(unique = true) private String email;
 
     // private class or static field (final && non-final)
 

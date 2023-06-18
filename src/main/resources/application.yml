@@ -1,5 +1,18 @@
 server:
   port: 8080
+  error:
+    include-message: always
+
 spring:
   main:
     web-application-type: servlet
+  data:
+    mongodb:
+      authentication-database: admin
+      uri: mongodb+srv://thiernohAdmin:MatGadi28@cluster0.aeuqnc9.mongodb.net/
+      database: springBootDb
+      auto-index-creation: true
+
+
+
+

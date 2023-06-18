@@ -5,6 +5,22 @@ I am building a Rest API using SpringBoot3, testing it, securing it, connecting 
 Maven > install maven > verify installation mvn -v 
 SpringBoot3
 JDK > Java Development Kit 17^
+Jackson > is a library for parsing Java object to Json Object, Json serialization and deserialization
+https://github.com/FasterXML/jackson 
+JSON Viewer > to view json as pretty in the web browser
+intellij Rest client plugin > RestfulTool
+Docker
+
+MongoDB
+<dependency>
+<groupId>org.springframework.data</groupId>
+<artifactId>spring-data-mongodb</artifactId>
+<version>4.1.0</version>
+</dependency>
+
+public apis > https://github.com/public-apis/public-apis
+stripe payment api > https://stripe.com/docs/api
+
 
 # Java Embedded Web Servers
 Java Embedded Web Servers are lightweight web servers that can be embedded in a Java application.
@@ -34,6 +50,107 @@ and easy-to-use HTTP server capabilities for web application development.
 Each server has its own strengths and features, making them suitable
 for different use cases and application requirements.
 ![img.png](img.png)
+
+# Spring Annotation
+@ComponentScan
+Is responsible for telling Spring where to look for components.
+This annotation is part of @SpringBootApplication which can be found 
+on the main class of any Spring Boot application.
+By default, Spring will search within the package that the main class is located,
+along with all of its child packages.
+As such, it is very important to only put components in the same package
+or a child package:
+
+@Component
+This annotation is a class level annotation, and it tells spring that this class is a component 
+so that the spring IOC/DI container can register a bean for the class and managed the bean.
+In addition to the @Component annotation, you can also use
+@Repository, @Service, and @Controller annotations.
+Each of these annotations has a specific purpose and spring will manage your components
+accordingly.
+For example, the @Repository annotation is used for classes that implement
+data access objects (DAOs).
+The spring container will manage these classes and ensure that they have all
+the necessary dependencies injected.
+Similarly, the @Service annotation is used for classes that provide business logic services.
+Spring will manage these classes and ensure that they have all the necessary dependencies injected.
+
+@Bean
+This is a method level annotation that is used to explicitly declare a bean definition
+in a configuration class annotated with @Configuration or @Import
+It is typically used when you want more fine-grained control over the configuration of the bean.
+Overall, @Bean is used to declare a method that provides an instance of a bean to the Spring container,
+where we have more control over the configuration of the bean, compared to just using the @component annotation.
+In Spring, @Bean is an annotation that is used to declare a single bean.
+It is generally used to configure third-party beans
+or beans that are not defined in the application context.
+
+@Configuration
+This annotation is used to denote a class that has a method annotated with @Bean. 
+The annotation register a bean of type AnnotationConfigApplicationContext to the spring container.
+That bean can be used to configure a Bean returned by a method annotated with @Bean.
+
+@EnableAutoConfiguration
+
+@Autowired
+
+@Qualifier
+
+@PropertySource
+
+# Spring MVC annotation
+The Spring Web MVC (model-view-controller) framework provides
+a very easy way of implementing MVC architecture in our web applications.
+The Java language has a low level API called the Servlets API,
+which allows us to write servlets which are special Java classes for handling
+HTTP request/responses. However, working directly with the servlets API can be clunky when working on large,
+enterprise grade applications. We need a better way...
+Spring MVC abstracts away a lot of the messy details you would have to understand
+and manage yourself if writing servlets manually.
+It exposes a custom set of annotations which we apply to our classes
+and methods to assign their responsibility within the MVC architecture.
+By using annotations to mark the responsibilities of our classes, Spring Web MVC cuts out a lot of boilerplate.
+Creating Restful services becomes very easy.
+The following are the most important annotations we need to know when working with Spring MVC.
+
+@Controller
+marks the class as a web controller. A specialisation of the @component annotation, which allows Spring to auto-detect implementation classes/beans by scanning the classpath.
+
+@RestController
+The @RestController annotation is a convenience syntax for @Controller and @ResponseBody together. This indicates that the class is a controller, and that all the methods in the marked class will return a JSON response.
+
+@ResponseBody
+The @ResponseBody is a utility annotation that tells Spring to automatically serialize return value(s) of this classes methods into HTTP responses. When building a JSON endpoint, this is an amazing way to "magically" convert your objects into JSON for easier consumption. If we use the @RestController annotation on our class, we don't need this annotation at all, because @RestController inherits from it.
+
+@RequestBody
+The @RequestBody annotation is used to bind the HTTP request body to a Java object. The @RequestBody annotation is part of the spring framework and is used in conjunction with the spring MVC web framework. The spring MVC web framework is a Java-based web application framework that provides a comprehensive set of features for building web applications. The spring framework is a popular choice for building Java-based web applications. The spring MVC web framework is based on the Model-View-Controller (MVC) architecture. The MVC architecture is a design pattern that separates an application into three components: the model, the view, and the controller. The @RequestBody annotation is used to bind the HTTP request body to the controller. The controller processes the request and then sends the response back to the view. The view displays the response to the user.
+
+@RequestMapping(method = RequestMethod.GET, value = "/path")
+The @RequestMapping(method = RequestMethod.GET, value = "/path") annotation specifies a method in the controller that should be responsible for serving the HTTP request to the given path, or endpoint. Spring handles the mechanical details of how this is achieved for you. You simply specify the method and path parameters on the annotation and Spring will route the requests into the correct action methods. If you don't specify a method value, it will default to GET.
+
+@GetMapping(value = "/path")
+An abbreviated form of @RequestMapping specifically for HTTP GET requests, which only takes an optional value argument, no method argument. The read in CRUD.
+
+@PostMapping(value = "/path")
+An abbreviated form of @RequestMapping specifically for HTTP POST requests, which only takes an optional value argument, no method argument. The create in CRUD.
+
+@PutMapping(value = "/path")
+An abbreviated form of @RequestMapping specifically for HTTP PUT requests, which only takes an optional value argument, no method argument. The update in CRUD.
+
+@DeleteMapping(value = "/path")
+An abbreviated form of @RequestMapping specifically for HTTP DELETE requests, which only takes an optional value argument, no method argument. The delete in CRUD.
+
+@RequestParam(value="name", defaultValue="World")
+Naturally, the methods handling the requests might take parameters.
+To help you with binding the HTTP parameters into the action method arguments,
+you can use the @RequestParam(value="name", defaultValue="World") annotation.
+Spring will parse the request parameters and put the appropriate ones into your method arguments.
+
+@PathVariable("placeholderName")
+Another common way to provide information to the backend is to encode it in the URL. Then you can use the @PathVariable("placeholderName") annotation to bring the values from the URL to the method arguments.
+
+# Bean scopes
+![img_2.png](img_2.png)
 
 #Steps
 create a maven/springboot3 project with spring initializr
