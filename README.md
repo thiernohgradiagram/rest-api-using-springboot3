@@ -155,3 +155,42 @@ Another common way to provide information to the backend is to encode it in the 
 #Steps
 create a maven/springboot3 project with spring initializr
 
+
+
+
+
+
+# Continuous Deployment
+mvn compile >
+
+unit tests >
+Maven Surefire Plugin: https://maven.apache.org/surefire/maven-surefire-plugin/
+The Surefire plugin should execute on the unit tests, not the integration tests.
+It needs to be configured so that only the unit tests are executed.
+The surefire plugin is configured to execute any class that ends with Tests.
+
+integration tests >
+Maven Failure Plugin: https://maven.apache.org/surefire/maven-failsafe-plugin/
+The maven failsafe plugin is used to execute the integration tests
+
+Generate a Jar file > 
+spring boot maven plugin: https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/
+./mvnw clean | mvn clean    > delete the target folder
+mvn package                 > create a jar
+java -jar target/Rest-Api-Using-SpringBoot3-0.0.1-SNAPSHOT.jar > run the jar
+
+Packaging the jar file into a docker image with Jib >
+https://github.com/GoogleContainerTools/jib
+
+
+pushing the image to a docker registry (dockerHub|gitHub packages - ghcr|AWS ECR| Google GCR) >
+
+deploy the image to a docker registry of your choice as a public or private image.
+
+run the image as a container on AWS ECS > Elastic Container Service Or Kubernetes.
+
+
+
+
+
+
