@@ -185,9 +185,12 @@ https://github.com/GoogleContainerTools/jib
 pushing the image to a docker registry (dockerHub|gitHub packages - ghcr|AWS ECR| Google GCR) >
 mvn clean package
 
-pulling an image from docker hub:
+# pulling an image from docker hub:
 docker pull thiernohgradiagram/rest-api-using-springboot3:0.0.1-SNAPSHOT
 docker pull thiernohgradiagram/rest-api-using-springboot3:latest
+
+# running the container 
+docker run --name thiernohsRestApi --rm -p 8080:8080
 
 docker ps	List running containers
 docker ps -a	List all containers (including stopped ones)
