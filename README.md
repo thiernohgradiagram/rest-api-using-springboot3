@@ -182,15 +182,37 @@ java -jar target/Rest-Api-Using-SpringBoot3-0.0.1-SNAPSHOT.jar > run the jar
 Packaging the jar file into a docker image with Jib >
 https://github.com/GoogleContainerTools/jib
 
-
 pushing the image to a docker registry (dockerHub|gitHub packages - ghcr|AWS ECR| Google GCR) >
+mvn clean package
+
+pulling an image from docker hub:
+docker pull thiernohgradiagram/rest-api-using-springboot3:0.0.1-SNAPSHOT
+docker pull thiernohgradiagram/rest-api-using-springboot3:latest
+
+docker ps	List running containers
+docker ps -a	List all containers (including stopped ones)
+docker images	List images
+docker run <image>	Run a container from an image
+docker stop <container>	Stop a running container
+docker rm <container>	Remove a stopped container
+docker rmi <image>	Remove an image
+docker build <path/to/dockerfile>	Build an image from a Dockerfile
+docker tag <image> <new_name:tag>	Tag an image with a new name and optional tag
+docker login	Log in to a Docker registry
+docker push <image>	Push an image to a Docker registry
+docker pull <image>	Pull an image from a Docker registry
+docker exec -it <container> <command>	Execute a command in a running container
+docker-compose up	Start all services defined in a docker-compose.yml file
+docker-compose down	Stop all services defined in a docker-compose.yml file
+
 
 deploy the image to a docker registry of your choice as a public or private image.
 
 run the image as a container on AWS ECS > Elastic Container Service Or Kubernetes.
 
 
-
+// protecting mongoDB credentials
+// https://frugalisminds.com/how-to-encrypt-passwords-in-spring-boot-configuration/
 
 
 

@@ -1,5 +1,6 @@
 package com.thiernoh.app1;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -7,11 +8,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
+@EnableEncryptableProperties
 //@EnableMongoRepositories(basePackageClasses = PersonRepository.class)
 public class Main {
 
     public static void main(String[] args) {
-        // MongoDb Admin: thiernohAdmin/MatGadi28
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Main.class, args);
         System.out.println("Hello World!");
         printAllBeansInTheApplicationContext(applicationContext);

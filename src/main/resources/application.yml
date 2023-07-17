@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+
+spring:
+  main:
+    web-application-type: servlet
+  data:
+    mongodb:
+      authentication-database: admin
+      password: ENC(UCfrQUPddG+6q035EJ7k5J7Ho6AwEaIJ)
+      uri: mongodb+srv://thiernohAdmin:${spring.data.mongodb.password}@cluster0.aeuqnc9.mongodb.net/
+      database: springBootDb
+      auto-index-creation: true
+      
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+
