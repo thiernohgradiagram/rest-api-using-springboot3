@@ -9,7 +9,7 @@ spring:
   data:
     mongodb:
       authentication-database: admin
-      password: ENC(UCfrQUPddG+6q035EJ7k5J7Ho6AwEaIJ)
+      password: ENC(hQtJclEQUupLEVl8GTrdQ/RJcKAcGBFC)
       uri: mongodb+srv://thiernohAdmin:${spring.data.mongodb.password}@cluster0.aeuqnc9.mongodb.net/
       database: springBootDb
       auto-index-creation: true
